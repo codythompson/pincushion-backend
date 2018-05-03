@@ -2,8 +2,6 @@
 
 ## Users
 
-- GUID
-
 ## MaterialTypes
 
 - name string
