@@ -4,32 +4,54 @@
 
 - GUID
 
-## MaterialCategories
-
-- name string
-- description string
-
 ## MaterialTypes
 
 - name string
 - description string
 - attributes [{}]
 - images [string]
-- _materialCategoryIds [ObjectId] (foreign keys)
+- ancestors [ObjectId] (the 'path' from root to this node)
 
-copied from MaterialCategories
-- materialCategoryName
-- materialCategoryDescription
-
-## Materials
+## MaterialInventory
 
 - name string
 - description string
 - attributes {} (material type attribute values)
 - images [string]
-- _materialTypeId ObjectId (foreign key)
+- notes string
+- userId ObjectId (foreign key)
+- materialTypeId ObjectId (foreign key)
 
 copied from MaterialTypes on every insert
 - materialTypeName string
 - materialTypeDescription string
-- materialTypeTags [string]
+- materialImages [string]
+- materialAncestors [ObjectId]
+
+## PatternBrand
+
+- name string
+- description string
+
+## Pattern
+
+- number string
+- minSize number
+- maxSize number
+- envelopeFrontImage [string]
+- envelopeBackImage [string]
+- lineArt [string]
+- yardageCharts {[{heading: string, rows: [label: string, cells: []}
+- patternBrandId ObjectId (foreign key)
+
+copied from PatternBrand
+- patternBrandName string
+- patternBrandDescription string
+
+## PatternInventory
+
+- name string
+- description string
+- notes string
+- patternId ObjectId (foreign key)
+
