@@ -1,4 +1,4 @@
-db.use('pincushion');
+db = db.getSiblingDB('pincushion');
 
 db.createCollection('users', {});
 
