@@ -1,5 +1,8 @@
 db = db.getSiblingDB('pincushion');
 
+db.dropCollection('users');
+db.dropCollection('materialTypes');
+
 db.createCollection('users', {});
 
 db.createCollection('materialTypes', {
