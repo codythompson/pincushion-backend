@@ -1,3 +1,5 @@
+db.use('pincushion');
+
 db.createCollection('users', {});
 
 db.createCollection('materialTypes', {
