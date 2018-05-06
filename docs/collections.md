@@ -35,10 +35,10 @@ copied from MaterialTypes on every insert
 - minSize number
 - maxSize number
 - sizeUnits string
-- envelopeFrontImage [string]
-- envelopeBackImage [string]
+- envelopeFrontImages [string]
+- envelopeBackImages [string]
 - lineArt [string]
-- yardageCharts {[{heading: string, rows: [label: string, cells: []}
+- yardageCharts [{heading: string, rows: [{label: string, cells: []}}]
 - patternBrandId ObjectId (foreign key)
 
 copied from PatternBrand
