@@ -70,3 +70,19 @@ db.createCollection('materialInventory', {
     }
   }
 });
+
+db.createCollection('patternBrand', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      properties: {
+        name: {
+          bsonType: 'string'
+        },
+        description: {
+          bsonType: 'string'
+        }
+      }
+    }
+  }
+});
