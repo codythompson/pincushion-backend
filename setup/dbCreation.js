@@ -32,3 +32,41 @@ db.createCollection('materialTypes', {
     }
   }
 });
+
+db.createCollection('materialInventory', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['userId', 'materialTypeId'],
+      properties: {
+        userId: {
+          bsonType: 'objectId'
+        },
+        materialTypeId: {
+          bsonType: 'objectId'
+        },
+        notes: {
+          bsonType: 'string'
+        },
+        images: {
+          bsonType: 'array'
+        },
+        quantity: {
+          bsonType: 'object'
+        },
+        materialTypeName: {
+          bsonType: 'string'
+        },
+        materialTypeDescription: {
+          bsonType: 'string'
+        },
+        materialImages: {
+          bsonType: 'array'
+        },
+        materialAncestors: {
+          bsonType: 'array'
+        }
+      }
+    }
+  }
+});
