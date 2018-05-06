@@ -34,6 +34,7 @@ copied from MaterialTypes on every insert
 - number string
 - minSize number
 - maxSize number
+- sizeUnits string
 - envelopeFrontImage [string]
 - envelopeBackImage [string]
 - lineArt [string]
