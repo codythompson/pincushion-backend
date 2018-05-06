@@ -12,11 +12,9 @@
 
 ## MaterialInventory
 
-- name string
-- description string
-- attributes {} (material type attribute values)
-- images [string]
 - notes string
+- images [string]
+- quantity {}
 - userId ObjectId (foreign key)
 - materialTypeId ObjectId (foreign key)
 
