@@ -47,8 +47,19 @@ copied from PatternBrand
 
 ## PatternInventory
 
-- name string
-- description string
 - notes string
 - patternId ObjectId (foreign key)
+- userId ObjectId (foreign key)
 
+copied from Pattern
+- patternBrandId ObjectId (foreign key)
+- patternNumber string
+- patternMinSize number
+- patternMaxSize number
+- patternSizeUnits string
+- patternEnvelopeFrontImages [string]
+- patternEnvelopeBackImages [string]
+- patternLineArt [string]
+- patternYardageCharts [{heading: string, rows: [{label: string, cells: []}}]
+- patternBrandName string
+- patternBrandDescription string
