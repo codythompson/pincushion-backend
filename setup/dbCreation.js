@@ -129,3 +129,56 @@ db.createCollection('pattern', {
     }
   }
 });
+
+db.createCollection('patternInventory', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['userId', 'patternId'],
+      properties: {
+        userId: {
+          bsonType: 'objectId'
+        },
+        patternId: {
+          bsonType: 'objectId'
+        },
+        notes: {
+          bsonType: 'string'
+        },
+        patternBrandId: {
+          bsonType: 'objectId'
+        },
+        patternNumber: {
+          bsonType: 'string'
+        },
+        patternMinSize: {
+          bsonType: 'number'
+        },
+        patternMaxSize: {
+          bsonType: 'number'
+        },
+        patternSizeUnits: {
+          bsonType: 'string'
+        },
+        patternEnvelopFrontImages: {
+          bsonType: 'array'
+        },
+        patternEnvelopBackImages: {
+          bsonType: 'array'
+        },
+        patternLineArt: {
+          bsonType: 'array'
+        },
+        patternYardageChargs: {
+          bsonType: 'object'
+        },
+        patternPatternBrandName: {
+          bsonType: 'string'
+        },
+        patternPatternBrandDescription: {
+          bsonType: 'string'
+        }
+      }
+    }
+  }
+});
