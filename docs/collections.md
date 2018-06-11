@@ -63,3 +63,29 @@ copied from Pattern
 - patternYardageCharts [{heading: string, rows: [{label: string, cells: []}}]
 - patternBrandName string
 - patternBrandDescription string
+
+## Projects
+
+- name string
+- description string
+- patternIds [ObjectId] (foreign keys)
+- materialIds [ObjectId] (foreign keys)
+- images [string]
+- notes string
+
+## Resources
+
+- name string
+- description string
+- link string
+- images [string]
+- notes string
+
+
+
+
+
+
+
+
+ 

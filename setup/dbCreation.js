@@ -2,6 +2,12 @@ db = db.getSiblingDB('pincushion');
 
 db.users.drop();
 db.materialTypes.drop();
+db.materialInventory.drop();
+db.patternBrand.drop();
+db.pattern.drop();
+db.patternInventory.drop();
+db.projects.drop();
+db.resources.drop();
 
 db.createCollection('users', {});
 
@@ -176,6 +182,61 @@ db.createCollection('patternInventory', {
           bsonType: 'string'
         },
         patternPatternBrandDescription: {
+          bsonType: 'string'
+        }
+      }
+    }
+  }
+});
+
+db.createCollection('projects', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['name'],
+      properties: {
+        name: {
+          bsonType: 'string'
+        },
+        description: {
+          bsonType: 'string'
+        },
+        patternIds: {
+          bsonType: 'array'
+        },
+        materialIds: {
+          bsonType: 'array'
+        },
+        images: {
+          bsonType: 'array'
+        },
+        notes: {
+          bsonType: 'string'
+        }
+      }
+    }
+  }
+});
+
+db.createCollection('resources', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['name'],
+      properties: {
+        name: {
+          bsonType: 'string'
+        },
+        description: {
+          bsonType: 'string'
+        },
+        link: {
+          bsonType: 'string'
+        },
+        images: {
+          bsonType: 'array'
+        },
+        notes: {
           bsonType: 'string'
         }
       }
