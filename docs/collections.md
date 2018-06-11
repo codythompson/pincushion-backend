@@ -81,11 +81,7 @@ copied from Pattern
 - images [string]
 - notes string
 
+# TODO
 
-
-
-
-
-
-
+- test the latest changes to the creation script
  
