@@ -1,5 +1,5 @@
 setup/deploy.sh
-setup/deployExclude.sh
+setup/deployExclude.txt
 node_modules
 .git
 .gitignore

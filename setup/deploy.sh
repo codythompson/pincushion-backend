@@ -11,5 +11,9 @@ then
 fi
 
 pcdep () {
-  rsync -rv -e "ssh -i ~/.ssh/mongodb_ec2.pem" --exclude-from $PINCUSH_LOCAL/setup/deployExclude.txt $PINCUSH_LOCAL/ $PINCUSH_REMOTE_HOST:$PINCUSH_REMOTE
+  rsync -rv -e "ssh -i $PINCUSH_REMOTE_PEM" --exclude-from $PINCUSH_LOCAL/setup/deployExclude.txt $PINCUSH_LOCAL/ $PINCUSH_REMOTE_HOST:$PINCUSH_REMOTE
+}
+
+pcssh () {
+  ssh -i $PINCUSH_REMOTE_PEM $PINCUSH_REMOTE_HOST
 }
