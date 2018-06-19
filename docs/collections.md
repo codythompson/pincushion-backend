@@ -84,4 +84,5 @@ copied from Pattern
 # TODO
 
 - test the latest changes to the creation script
+- add a script to create the initial values for a db
  
