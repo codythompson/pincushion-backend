@@ -1,13 +1,6 @@
 db = db.getSiblingDB('pincushion');
 
-db.users.drop();
-db.materialTypes.drop();
-db.materialInventory.drop();
-db.patternBrand.drop();
-db.pattern.drop();
-db.patternInventory.drop();
-db.projects.drop();
-db.resources.drop();
+db.dropDatabase();
 
 db.createCollection('users', {});
 

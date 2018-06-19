@@ -4,5 +4,5 @@ db.dropUser('schemaAdmin');
 db.createUser({
   user: 'schemaAdmin',
   pwd: users.setup,
-  roles: ['readWrite']
+  roles: ['dbAdmin']
 });
