@@ -2,3 +2,4 @@ node_modules
 dontDeploy
 setup/args.js.gpg
 setup/args.js
+data
