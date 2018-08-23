@@ -1,0 +1,8 @@
+setup/deploy.sh
+setup/deployExclude.txt
+node_modules
+.git
+.gitignore
+dontDeploy
+docs
+package.json
