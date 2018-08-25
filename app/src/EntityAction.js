@@ -3,6 +3,7 @@ class EntityAction {
     this.action = action
     this.collectionName = null
     this.fields= []
+    this.next = null
   }
 
   create () {
@@ -34,6 +35,11 @@ class EntityAction {
     this.fields = this.fields
       .concat(fields)
     return this
+  }
+
+  then () {
+    this.next = new EntityAction()
+    return this.next
   }
 
   static get CREATE () {

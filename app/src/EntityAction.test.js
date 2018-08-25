@@ -53,4 +53,12 @@ describe('EntityAction', ()=>{
     expect(ea).toBeInstanceOf(EntityAction)
     expect(ea.action).toStrictEqual('delete')
   })
+  it('should have a then method that creates a new entity-action and returns it', ()=>{
+    let origEA = EntityAction
+      .create()
+    let next = origEA
+      .then()
+    expect(origEA.next).toEqual(next)
+    expect(next).not.toEqual(origEA)
+  })
 })
