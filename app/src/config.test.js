@@ -19,12 +19,15 @@ describe('config', () => {
     expect(cA.dbUsername).toStrictEqual('blah')
     expect(cA.dbPassword).toStrictEqual('some')
     expect(cA.rando).toStrictEqual(42)
-    expect(cB.dbUsername).not.toBeDefined();
-    expect(cB.dbPassword).not.toBeDefined()
-    expect(cB.rando).not.toStrictEqual(42)
     expect(cB.rando).toStrictEqual('22')
   })
   it('should add default values for unsupplied fields', ()=>{
     expect(cA.port).toStrictEqual(3000);
+  })
+  it('should not store dbUsername or dbPassword within itself', ()=>{
+    expect(cB.dbUsername).not.toBeDefined();
+    expect(cB.dbPassword).not.toBeDefined()
+    expect(Config.defaults.dbUsername).not.toBeDefined();
+    expect(Config.defaults.dbPassword).not.toBeDefined();
   })
 })
