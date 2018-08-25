@@ -1,7 +1,7 @@
 const Express = require('jest-express')
 
 const Server = require('./Server')
-const Config = require('./config')
+const Config = require('./Config')
 
 describe('Server', ()=>{
   let config = new Config({
