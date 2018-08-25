@@ -18,4 +18,10 @@ describe('EntityAction', ()=>{
     expect(EntityAction.UPDATE).toStrictEqual('update')
     expect(EntityAction.DELETE).toStrictEqual('delete')
   })
+  it('should have a collection method that specifies the collection to be used', ()=>{
+    let ea = EntityAction
+      .create()
+      .collection('test-collection')
+    expect(ea.collectionName).toStrictEqual('test-collection')
+  })
 })

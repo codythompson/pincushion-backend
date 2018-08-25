@@ -1,8 +1,13 @@
 class EntityAction {
   constructor (action=null) {
-    this.action = action;
-    this.collection = null;
-    this.fields = [];
+    this.action = action
+    this.collectionName = null
+    this.fields= []
+  }
+
+  collection (collectionName) {
+    this.collectionName = collectionName
+    return this
   }
 
   static get CREATE () {
