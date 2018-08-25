@@ -24,4 +24,15 @@ describe('EntityAction', ()=>{
       .collection('test-collection')
     expect(ea.collectionName).toStrictEqual('test-collection')
   })
+  it('should have field method that adds the field name to a list of fields that will be created/read/updated', ()=>{
+    let ea = EntityAction
+      .update()
+      .field('test-field 1')
+      .field('test-field 2')
+    expect(ea.fields).toEqual(['test-field 1', 'test-field 2'])
+    ea = EntityAction
+      .update()
+      .field('test-field 3', 'test-field 4')
+    expect(ea.fields).toEqual(['test-field 3', 'test-field 4'])
+  })
 })

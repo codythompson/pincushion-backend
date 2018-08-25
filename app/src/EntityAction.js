@@ -10,6 +10,12 @@ class EntityAction {
     return this
   }
 
+  field(...fields) {
+    this.fields = this.fields
+      .concat(fields)
+    return this
+  }
+
   static get CREATE () {
     return 'create'
   }
