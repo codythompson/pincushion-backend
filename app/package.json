@@ -12,7 +12,8 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "jest": "^23.5.0"
+    "jest": "^23.5.0",
+    "jest-express": "^1.6.1"
   },
   "engines": {
     "node": ">=8.11.3"
