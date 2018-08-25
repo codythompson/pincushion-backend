@@ -11,37 +11,37 @@ class EntityAction {
   }
 
   static get CREATE () {
-    return 'create';
+    return 'create'
   }
 
   static get READ () {
-    return 'read';
+    return 'read'
   }
 
   static get UPDATE () {
-    return 'update';
+    return 'update'
   }
 
   static get DELETE () {
-    return 'delete';
+    return 'delete'
   }
 
   static create () {
-    return new EntityAction(EntityAction.CREATE);
+    return new EntityAction(EntityAction.CREATE)
   }
 
   static read () {
-    return new EntityAction(EntityAction.READ);
+    return new EntityAction(EntityAction.READ)
   }
 
   static update () {
-    return new EntityAction(EntityAction.UPDATE);
+    return new EntityAction(EntityAction.UPDATE)
   }
 
   static delete () {
-    return new EntityAction(EntityAction.DELETE);
+    return new EntityAction(EntityAction.DELETE)
   }
 
 }
 
-module.exports = EntityAction;
+module.exports = EntityAction
