@@ -4,11 +4,13 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "jest"
   },
   "author": "Cody Thompson",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.3",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
