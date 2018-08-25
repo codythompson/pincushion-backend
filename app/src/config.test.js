@@ -24,4 +24,7 @@ describe('config', () => {
     expect(cB.rando).not.toStrictEqual(42)
     expect(cB.rando).toStrictEqual('22')
   })
+  it('should add default values for unsupplied fields', ()=>{
+    expect(cA.port).toStrictEqual(3000);
+  })
 })

@@ -4,7 +4,9 @@ const defaults = require('lodash/defaults')
 /*
  * default config values
  */
-const defaultValues = {}
+const defaultValues = {
+  port: 3000
+}
 
 class Config {
   /**
