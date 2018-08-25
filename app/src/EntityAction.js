@@ -5,6 +5,26 @@ class EntityAction {
     this.fields= []
   }
 
+  create () {
+    this.action = EntityAction.CREATE
+    return this
+  }
+
+  read () {
+    this.action = EntityAction.READ
+    return this
+  }
+
+  update () {
+    this.action = EntityAction.UPDATE
+    return this
+  }
+
+  delete () {
+    this.action = EntityAction.DELETE
+    return this
+  }
+
   collection (collectionName) {
     this.collectionName = collectionName
     return this
