@@ -15,7 +15,7 @@ const start = (localConfigPath) => {
 // from https://stackoverflow.com/a/6090287
 if (require.main === module) {
   const localConfigPath = path.resolve(__dirname, '../localConfig.json')
-  start(localConfigPath);
+  start(localConfigPath)
 }
 
-module.exports = start;
+module.exports = start
