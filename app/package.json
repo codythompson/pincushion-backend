@@ -6,14 +6,13 @@
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": ".."
-  },
   "author": "Cody Thompson",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "jest": "^23.5.0"
+  },
+  "engines": {
+    "node": ">=8.11.3"
   }
 }
