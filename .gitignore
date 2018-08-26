@@ -3,4 +3,4 @@ dontDeploy
 setup/args.js.gpg
 setup/args.js
 data
-localConfig.json
+**/localConfig.json
