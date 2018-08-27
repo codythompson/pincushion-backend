@@ -61,4 +61,18 @@ describe('EntityAction', ()=>{
     expect(origEA.next).toEqual(next)
     expect(next).not.toEqual(origEA)
   })
+  /*
+   * #27
+   */
+  it('should have a record method that appends to a recordsArray field', () => {
+    let ea = new EntityAction()
+    let ea2 = new EntityAction()
+    expect(ea.recordsArray).toBeInstanceOf(Array)
+    ea = ea.record({'blah': 42})
+    expect(ea).toEqual(ea)
+    ea.record({mmk: 22})
+    ea2.record({'blah': 42}, {mmk: 22})
+    expect(ea.recordsArray).toEqual([{'blah': 42}, {mmk: 22}])
+    expect(ea2.recordsArray).toEqual([{'blah': 42}, {mmk: 22}])
+  })
 })
