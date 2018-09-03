@@ -6,6 +6,14 @@ class Model {
     this.client = client
   }
 
+  runCreate (entityAction) {
+    return Promise.resolve({
+      success: true,
+      error: null,
+      result: null
+    })
+  }
+
   static connect (config) {
     if (typeof config.dbUsername !== 'string' || typeof config.dbPassword !== 'string') {
       return Promise.reject(new Error('config object must have dbUsername and dbPassword field', 'connect (static)', 'Model'))

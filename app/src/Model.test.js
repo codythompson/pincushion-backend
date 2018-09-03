@@ -4,13 +4,14 @@ const MongoClient = require('mongodb').MongoClient
 
 const Model = require('./Model')
 const PincushionError = require('./PincushionError')
+const EntityAction = require('./EntityAction')
 
 describe('Model', () => {
-  describe('connect', () => {
+  beforeEach(() => {
+    MongoClient.__mockFailedConnection = false
+  })
 
-    beforeEach(() => {
-      MongoClient.__mockFailedConnection = false
-    })
+  describe('connect', () => {
 
     it('should resolve with a model instance', () => {
       return Model.connect({
@@ -33,13 +34,13 @@ describe('Model', () => {
         expect(Model.connect({}))
           .rejects.toThrow(PincushionError),
         expect(Model.connect({
-            dbUsername: 'blah'
-          }))
-            .rejects.toThrow(PincushionError),
+          dbUsername: 'blah'
+        }))
+          .rejects.toThrow(PincushionError),
         expect(Model.connect({
-            dbPassword: 'dee'
-          }))
-            .rejects.toThrow(PincushionError)
+          dbPassword: 'dee'
+        }))
+          .rejects.toThrow(PincushionError)
       ])
         .catch(e => Promise.reject(e))
     })
@@ -50,6 +51,25 @@ describe('Model', () => {
         dbUsername: 'blah',
         dbPassword: 'blah'
       })).rejects.toThrow(PincushionError)
+    })
+  })
+
+  describe('runCreate', () => {
+    it('it should resolve with a result object', () => {
+      return Model.connect({
+        dbUsername: 'blah',
+        dbPassword: 'blah'
+      })
+        .then(m => m.runCreate(EntityAction.create()))
+        .then((result) => {
+          try {
+            expect(result.success).toEqual(true)
+            expect(result.error).toBeNull()
+            expect(result.result).toBeNull()
+          } catch (e) {
+            return Promise.reject(e)
+          }
+        })
     })
   })
 })
