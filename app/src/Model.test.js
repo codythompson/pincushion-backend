@@ -13,6 +13,7 @@ describe('Model', ()=>{
     })
     .then(m => {
       try {
+        expect(MongoClient.connect).toBeCalledTimes(1)
         expect(m).toBeInstanceOf(Model)
         expect(m.client).toBeInstanceOf(MongoClient)
       } catch (e) {
