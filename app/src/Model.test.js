@@ -3,22 +3,37 @@ jest.mock('mongodb')
 const MongoClient = require('mongodb').MongoClient
 
 const Model = require('./Model')
+const PincushionError = require('./PincushionError')
 
-describe('Model', ()=>{
+describe('Model', () => {
+  describe('connect', () => {
 
-  it('should have a static connect method that takes a config object and returns a model instance', () => {
-    return Model.connect({
-      dbUsername: 'blah',
-      dbPassword: 'blah'
+    beforeEach(() => {
+      MongoClient.__mockFailedConnection = false
     })
-    .then(m => {
-      try {
-        expect(MongoClient.connect).toBeCalledTimes(1)
-        expect(m).toBeInstanceOf(Model)
-        expect(m.client).toBeInstanceOf(MongoClient)
-      } catch (e) {
-        return Promise.reject(e)
-      }
+
+    it('should resolve with a model instance', () => {
+      return Model.connect({
+        dbUsername: 'blah',
+        dbPassword: 'blah'
+      })
+        .then(m => {
+          try {
+            expect(MongoClient.connect).toBeCalledTimes(1)
+            expect(m).toBeInstanceOf(Model)
+            expect(m.client).toBeInstanceOf(MongoClient)
+          } catch (e) {
+            return Promise.reject(e)
+          }
+        })
+    })
+
+    it('should reject if a connection can\'t be established', () => {
+      MongoClient.__mockFailedConnection = true
+      return expect(Model.connect({
+        dbUsername: 'blah',
+        dbPassword: 'blah'
+      })).rejects.toThrow(PincushionError)
     })
   })
 })
