@@ -82,4 +82,17 @@ describe('Model', () => {
       expect(m.runCreate).toBeCalledTimes(1)
     })
   })
+
+  describe('disconnect', () => {
+    it('should close the mongodb client', () => {
+      return Model.connect({
+        dbUsername: 'blah',
+        dbPassword: 'blah'
+      })
+        .then(m => {
+          m.close()
+          return expect(m.client.close).toBeCalledTimes(1)
+        })
+    })
+  })
 })

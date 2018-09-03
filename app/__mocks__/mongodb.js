@@ -1,5 +1,6 @@
 class MongoClient {
 }
+
 MongoClient.connect = jest.fn(() => {
   return new Promise((resolve, reject) =>{
     if (MongoClient.__mockFailedConnection) {
@@ -10,9 +11,10 @@ MongoClient.connect = jest.fn(() => {
   })
 })
 
+MongoClient.prototype.close = jest.fn()
+
 MongoClient.__mockFailedConnection = false
 
 module.exports = {
-  MongoClient,
-  woozers: 'wowzers'
+  MongoClient
 }

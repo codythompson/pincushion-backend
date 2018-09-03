@@ -24,6 +24,10 @@ class Model {
     this[methodMap[entityAction.action]](entityAction)
   }
 
+  close () {
+    this.client.close()
+  }
+
   static connect (config) {
     if (typeof config.dbUsername !== 'string' || typeof config.dbPassword !== 'string') {
       return Promise.reject(new Error('config object must have dbUsername and dbPassword field', 'connect (static)', 'Model'))
