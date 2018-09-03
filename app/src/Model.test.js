@@ -28,6 +28,22 @@ describe('Model', () => {
         })
     })
 
+    it('should reject with a PincushionError if config is missing db credentials', () => {
+      return Promise.all([
+        expect(Model.connect({}))
+          .rejects.toThrow(PincushionError),
+        expect(Model.connect({
+            dbUsername: 'blah'
+          }))
+            .rejects.toThrow(PincushionError),
+        expect(Model.connect({
+            dbPassword: 'dee'
+          }))
+            .rejects.toThrow(PincushionError)
+      ])
+        .catch(e => Promise.reject(e))
+    })
+
     it('should reject if a connection can\'t be established', () => {
       MongoClient.__mockFailedConnection = true
       return expect(Model.connect({
