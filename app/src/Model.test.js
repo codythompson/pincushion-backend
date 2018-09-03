@@ -72,4 +72,14 @@ describe('Model', () => {
         })
     })
   })
+
+  describe('run', () => {
+    it ('should call the method corresponding to the action passed in', () => {
+      // we can skip the async connect call, but we may need it in the future
+      const m = new Model(null)
+      m.runCreate = jest.fn()
+      m.run(EntityAction.create())
+      expect(m.runCreate).toBeCalledTimes(1)
+    })
+  })
 })

@@ -1,5 +1,11 @@
 const MongoClient = require('mongodb').MongoClient
+
 const Error = require('./PincushionError')
+const EntityAction = require('./EntityAction')
+
+const methodMap = {
+  [EntityAction.CREATE]: 'runCreate'
+}
 
 class Model {
   constructor(client) {
@@ -12,6 +18,10 @@ class Model {
       error: null,
       result: null
     })
+  }
+
+  run (entityAction) {
+    this[methodMap[entityAction.action]](entityAction)
   }
 
   static connect (config) {
