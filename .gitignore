@@ -1,4 +1,5 @@
 node_modules
+.vscode
 dontDeploy
 setup/args.js.gpg
 setup/args.js
