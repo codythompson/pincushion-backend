@@ -11,13 +11,17 @@ const start = (localConfigPath=DEFAULT_PATH) => {
   const config = new Config(localConfig)
   const app = express()
   const server = new Server(app, config)
-  server.start();
-  return server;
+  return server.start();
 };
 
 // from https://stackoverflow.com/a/6090287
 if (require.main === module) {
   start()
+    .catch((e) =>{
+      console.error("Unable to start server:")
+      console.error(e)
+      process.exit(-1)
+    })
 }
 
 module.exports = start

@@ -32,11 +32,13 @@ class Model {
     if (typeof config.dbUsername !== 'string' || typeof config.dbPassword !== 'string') {
       return Promise.reject(new Error('config object must have dbUsername and dbPassword field', 'connect (static)', 'Model'))
     }
-    const connStr = `mongodb://${config.dbUsername}:${config.dbPassword}@localhost/pincushion`
-    return MongoClient.connect(connStr)
+    const connStr = `mongodb://${encodeURIComponent(config.dbUsername)}:${encodeURIComponent(config.dbPassword)}@localhost/pincushion`
+    return MongoClient.connect(connStr, {
+      useNewUrlParser: true
+    })
       .then(client => new Model(client))
-      .catch(() => {
-        return Promise.reject(new Error('Error connectiont to mongodb', 'connect (static)', 'Model'))
+      .catch((e) => {
+        return Promise.reject(new Error('Error connecting to mongodb', 'connect (static)', 'Model'))
       })
   }
 }
