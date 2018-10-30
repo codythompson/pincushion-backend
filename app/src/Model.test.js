@@ -60,15 +60,56 @@ describe('Model', () => {
         dbUsername: 'blah',
         dbPassword: 'blah'
       })
-        .then(m => m.runCreate(EntityAction.create()))
+        .then((m) => {
+          m.client.__mockCollection('mockCollection')
+          return m
+        })
+        .then(m => m.runCreate(EntityAction.create().collection('mockCollection')))
         .then((result) => {
           try {
             expect(result.success).toEqual(true)
             expect(result.error).toBeNull()
-            expect(result.result).toBeNull()
+            // TODO test for insert result.result
           } catch (e) {
             return Promise.reject(e)
           }
+        })
+    })
+
+    it('it should call mongoclient.collection.insertMany with the correct collection and provided records', () => {
+      const c1 = EntityAction.create()
+        .record({
+          name: 'test name blah',
+          description: 'test desc blah blah blah'
+        }, {
+          name: 'other test name blah',
+          description: 'other test desc blah blah blah'
+        })
+        .collection('mockCollection')
+      return Model.connect({
+        dbUsername: 'blah',
+        dbPassword: 'blah'
+      })
+        .then((m) => {
+          m.client.__mockCollection('mockCollection')
+          return m.runCreate(c1)
+            .then(() => m)
+        })
+        .then((m) => {
+          const mockFunc = m.client.collection('mockCollection').insertMany
+          expect(mockFunc).toBeCalledTimes(1)
+          expect(mockFunc).toBeCalledWith(
+            expect.arrayContaining([
+              expect.objectContaining({
+                name: 'test name blah',
+                description: 'test desc blah blah blah'
+              }),
+              expect.objectContaining({
+                name: 'other test name blah',
+                description: 'other test desc blah blah blah'
+              })
+            ])
+          )
         })
     })
   })

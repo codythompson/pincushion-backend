@@ -13,11 +13,22 @@ class Model {
   }
 
   runCreate (entityAction) {
-    return Promise.resolve({
-      success: true,
-      error: null,
-      result: null
-    })
+    return this.client.collection(entityAction.collectionName)
+      .insertMany(entityAction.recordsArray)
+      .then((insertResult) => {
+        return Promise.resolve({
+          success: true,
+          error: null,
+          result: insertResult
+        })
+      })
+      .catch((error) => {
+        return Promise.resolve({
+          success: false,
+          error,
+          result: null
+        })
+      })
   }
 
   run (entityAction) {

@@ -1,4 +1,26 @@
 class MongoClient {
+  constructor () {
+    this.__mockCollections = {}
+  }
+
+  collection (collectionName) {
+    return this.__mockCollections[collectionName]
+  }
+
+  __mockCollection (collectionName) {
+    this.__mockCollections[collectionName] = {
+      insertMany: jest.fn()
+        .mockImplementation(()=>{
+          return Promise.resolve()
+        })
+    }
+  }
+
+  __mockClear () {
+    for (let collName in this.__mockCollections) {
+      this.__mockCollections[collName].insertMany.mockClear()
+    }
+  }
 }
 
 MongoClient.connect = jest.fn(() => {
@@ -6,7 +28,7 @@ MongoClient.connect = jest.fn(() => {
     if (MongoClient.__mockFailedConnection) {
       reject(new Error('mock mongo error'))
     } else {
-      resolve(new MongoClient)
+      resolve(new MongoClient())
     }
   })
 })
