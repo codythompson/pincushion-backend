@@ -11,6 +11,9 @@ class PincushionError extends Error {
     super(`[pincushion]${moduleStr}${functionStr} ${message}`)
     this.moduleName = moduleName
     this.functionName = functionName
+
+    this.isServerError = false;
+    this.clientMessage = null;
   }
 }
 

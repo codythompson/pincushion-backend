@@ -18,5 +18,8 @@ describe('PincushionError', ()=> {
     expect(eOmitNone.message).toStrictEqual('[pincushion][foo][bar] blah none')
     expect(eOmitNone.moduleName).toStrictEqual('foo')
     expect(eOmitNone.functionName).toStrictEqual('bar')
+
+    expect(eOmitNone.isServerError).toBe(false)
+    expect(eOmitNone.clientMessage).toBeNull()
   })
 })
